@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Babalola
+    given-names: Oluwaseyi Paul
+title: "HMM-DMD WiFi Fingerprinting Indoor Localization"
+version: 0.1.0
+date-released: 2025-01-15
+url: "https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization"
+license: MIT

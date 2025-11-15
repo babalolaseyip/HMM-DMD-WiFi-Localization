@@ -1,0 +1,33 @@
+data:
+  dataset_url: "https://crawdad.org/mannheim/compass/20080411/802.11"
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  training_samples: 20
+  test_samples: 100
+
+model:
+  hmm_dmd:
+    dmd_rank: 7
+    n_components: 14
+    n_mix: 3
+    cov_type: "diag"
+
+  comparison_models:
+    wknn:
+      k: 10
+    random_forest:
+      n_estimators: 100
+    naive_bayes: {}
+
+training:
+  random_state: 42
+  test_size: 0.2
+  n_jobs: -1
+  preprocessing:
+    normalize: true
+    smooth: true
+    window_size: 3
+
+evaluation:
+  metrics: ["accuracy", "mean_localization_error", "cdf"]
+  error_thresholds: [1, 2, 4, 6]
