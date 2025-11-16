@@ -685,20 +685,24 @@
             <!-- Figure 3: CDF Comparison (p=20) -->
             <div class="figure-container">
                 <div class="figure-title">Figure 3: CDF Comparison with State-of-the-Art Methods (κ=7, p=20)</div>
-                <div class="placeholder-figure">
-                    <p><strong>Cumulative Distribution Function</strong></p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">
-                        <strong>Within 2m:</strong><br>
-                        • HMM-DMD: <strong>40%</strong><br>
-                        • Random Forest: 30.3%<br>
-                        • WKNN: 25%<br>
-                        • Naive Bayes: 27.2%
-                    </p>
-                </div>
-                <div class="figure-caption">
-                    HMM-DMD shows superior performance across all distance thresholds
+                <div class="figure-row">
+                    <img src="figure3_cdf_p20.png" alt="CDF Comparison with 20 training samples">
+                    <div class="figure-subcaption">CDF Comparison (p=20)</div>
                 </div>
             </div>
+            <div class="figure-description">
+                <p><strong>Within 2m Accuracy:</strong></p>
+                <ul>
+                    <li><strong>HMM-DMD: 40%</strong></li>
+                    <li>Random Forest: 30.3%</li>
+                    <li>WKNN: 25%</li>
+                    <li>Naive Bayes: 27.2%</li>
+                </ul>
+            </div>
+            <div class="figure-caption">
+                HMM-DMD shows superior performance across all distance thresholds with limited training samples
+            </div>
+        </div>
             
             <!-- Figure 4: CDF Comparison (p=100) -->
             <div class="figure-container">
