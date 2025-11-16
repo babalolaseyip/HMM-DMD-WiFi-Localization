@@ -686,7 +686,7 @@
             <div class="figure-container">
                 <div class="figure-title">Figure 3: CDF Comparison with State-of-the-Art Methods (κ=7, p=20)</div>
                 <div class="figure-row">
-                    <img src="figure3_cdf_p20.png" alt="CDF Comparison with 20 training samples">
+                    <img src="docs/images/figure3_cdf_p20.png" alt="CDF Comparison with 20 training samples">
                     <div class="figure-subcaption">CDF Comparison (p=20)</div>
                 </div>
             </div>
@@ -706,19 +706,25 @@
             
             <!-- Figure 4: CDF Comparison (p=100) -->
             <div class="figure-container">
-                <div class="figure-title">Figure 4: CDF Comparison with Extended Training (κ=9, p=100)</div>
-                <div class="placeholder-figure">
-                    <p><strong>Performance Improvement</strong></p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">
-                        <strong>Within 2m:</strong> HMM-DMD outperforms NB by 12.7%, RF by 38.6%, WKNN by 39%<br>
-                        <strong>Within 4m:</strong> HMM-DMD outperforms NB by 20%, RF by 50%, WKNN by 54.7%<br>
-                        <strong>Within 6m:</strong> HMM-DMD outperforms NB by 12%, RF by 43.7%, WKNN by 40%
-                    </p>
-                </div>
-                <div class="figure-caption">
-                    Consistent superiority maintained with increased training samples
+            <div class="figure-title">Figure 4: CDF Comparison with Extended Training (κ=9, p=100)</div>
+            <div class="figure-row">
+                <div class="figure-item">
+                    <img src="docs/images/figure4_cdf_p100.png" alt="CDF Comparison with 100 training samples">
+                    <div class="figure-subcaption">CDF Comparison (p=100)</div>
                 </div>
             </div>
+            <div class="figure-description">
+                <p><strong>Performance Improvement:</strong></p>
+                <ul>
+                    <li><strong>Within 2m:</strong> HMM-DMD outperforms NB by 12.7%, RF by 38.6%, WKNN by 39%</li>
+                    <li><strong>Within 4m:</strong> HMM-DMD outperforms NB by 20%, RF by 50%, WKNN by 54.7%</li>
+                    <li><strong>Within 6m:</strong> HMM-DMD outperforms NB by 12%, RF by 43.7%, WKNN by 40%</li>
+                </ul>
+            </div>
+            <div class="figure-caption">
+                Consistent superiority maintained with increased training samples across all distance thresholds
+            </div>
+        </div>
             
             <!-- Table 2: Accuracy and Processing Time -->
             <div class="doc-section">
