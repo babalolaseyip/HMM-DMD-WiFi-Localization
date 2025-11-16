@@ -255,6 +255,74 @@
             font-size: 1.3rem;
         }
         
+        /* Figure Display */
+        .figure-container {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .figure-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 0.5rem;
+        }
+        
+        .figure-caption {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        
+        .figure-title {
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Architecture Diagram */
+        .architecture-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .architecture-box h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .process-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .process-step h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
         /* Footer */
         footer {
             background-color: var(--text-dark);
@@ -291,6 +359,34 @@
             font-weight: 500;
         }
         
+        /* Tables */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: var(--bg-light);
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             header h1 {
@@ -308,11 +404,25 @@
             .features {
                 grid-template-columns: 1fr;
             }
+            
+            .process-flow {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
+        }
+        
+        /* Placeholder for actual figures */
+        .placeholder-figure {
+            background: linear-gradient(135deg, #667eea22 0%, #764ba222 100%);
+            padding: 3rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            color: var(--text-dark);
+            margin: 1rem 0;
         }
     </style>
 </head>
@@ -327,14 +437,15 @@
                 <span class="badge">Python 3.8+</span>
                 <span class="badge">MIT License</span>
                 <span class="badge">94.65% Accuracy</span>
+                <span class="badge">MDPI Sensors 2021</span>
             </div>
             
             <div class="button-group">
                 <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization" class="btn" target="_blank">
                     View on GitHub
                 </a>
-                <a href="#quick-start" class="btn btn-secondary">
-                    Get Started
+                <a href="https://doi.org/10.3390/s21206778" class="btn btn-secondary" target="_blank">
+                    Read Paper
                 </a>
             </div>
         </div>
@@ -344,10 +455,11 @@
     <nav>
         <ul>
             <li><a href="#overview">Overview</a></li>
+            <li><a href="#architecture">Architecture</a></li>
             <li><a href="#features">Features</a></li>
-            <li><a href="#quick-start">Quick Start</a></li>
             <li><a href="#results">Results</a></li>
-            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#performance">Performance</a></li>
+            <li><a href="#quick-start">Quick Start</a></li>
             <li><a href="#citation">Citation</a></li>
         </ul>
     </nav>
@@ -356,45 +468,326 @@
     <section id="overview">
         <div class="container">
             <h2>Overview</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-light);">
-                This project implements the research paper "WiFi Fingerprinting Indoor Localization Based on Dynamic Mode Decomposition Feature Selection with Hidden Markov Model" by Babalola & Balyan (2021). It provides a complete, production-ready implementation for indoor positioning using WiFi RSSI measurements.
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem; color: var(--text-light);">
+                This project implements the research paper <strong>"WiFi Fingerprinting Indoor Localization Based on Dynamic Mode Decomposition Feature Selection with Hidden Markov Model"</strong> by Babalola & Balyan (2021), published in MDPI Sensors.
             </p>
+            
+            <div class="features" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                <div class="result-card">
+                    <div class="result-number">14</div>
+                    <div class="result-label">Access Points</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">612</div>
+                    <div class="result-label">Reference Points</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">312m²</div>
+                    <div class="result-label">Test Area</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">72,600</div>
+                    <div class="result-label">Training Samples</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Architecture Section -->
+    <section id="architecture" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2>System Architecture</h2>
+            
+            <div class="architecture-box">
+                <h3 style="text-align: center;">HMM-DMD Indoor Localization System</h3>
+                
+                <div class="process-flow">
+                    <div class="process-step">
+                        <h4>📡 Offline Stage</h4>
+                        <p>Radio Map Construction</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem; font-size: 0.9rem;">
+                            <li>→ Collect RSSI</li>
+                            <li>→ Build Database</li>
+                            <li>→ Link Locations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="process-step">
+                        <h4>🔬 DMD Feature Extraction</h4>
+                        <p>Dimensionality Reduction</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem; font-size: 0.9rem;">
+                            <li>→ SVD Decomposition</li>
+                            <li>→ Mode Extraction</li>
+                            <li>→ Feature Reconstruction</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="process-step">
+                        <h4>🤖 HMM Training</h4>
+                        <p>Model Learning</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem; font-size: 0.9rem;">
+                            <li>→ K-means Init</li>
+                            <li>→ Baum-Welch EM</li>
+                            <li>→ Parameter Update</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="process-step">
+                        <h4>📍 Online Stage</h4>
+                        <p>Location Prediction</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem; font-size: 0.9rem;">
+                            <li>→ Extract Features</li>
+                            <li>→ Viterbi Decode</li>
+                            <li>→ Estimate Location</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="figure-container">
+                <div class="figure-title">Figure 1: System Model for HMM-DMD Indoor Localization</div>
+                <div class="placeholder-figure">
+                    <p><strong>System Flow Diagram</strong></p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        Radio Map → Feature Extraction (DMD) → HMM Training (Offline)<br>
+                        ↓<br>
+                        RSSI from User → Feature Extraction → Refined Feature Vector → Viterbi Decoder → Estimated Location (Online)
+                    </p>
+                </div>
+                <div class="figure-caption">
+                    The complete system architecture showing offline training and online prediction stages
+                </div>
+            </div>
         </div>
     </section>
     
     <!-- Features Section -->
-    <section id="features" style="background-color: var(--bg-light);">
+    <section id="features">
         <div class="container">
             <h2>Key Features</h2>
             <div class="features">
                 <div class="feature-card">
                     <h3><span class="feature-icon">🔬</span> DMD Feature Extraction</h3>
-                    <p>Advanced Dynamic Mode Decomposition for extracting meaningful features from WiFi RSSI time-series data, implementing equations 11-22 from the paper.</p>
+                    <p>Dynamic Mode Decomposition reduces RSSI dimensionality from 14 APs to 7 features while preserving spatial-temporal information.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <h3><span class="feature-icon">🔄</span> HMM Modeling</h3>
-                    <p>Gaussian Mixture Hidden Markov Models for sequential data modeling and robust location prediction across multiple rooms.</p>
+                    <h3><span class="feature-icon">🔄</span> HMM Classification</h3>
+                    <p>Gaussian Mixture Hidden Markov Models with k-means initialization and Baum-Welch EM algorithm for robust localization.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <h3><span class="feature-icon">📊</span> Comprehensive Evaluation</h3>
-                    <p>Multiple metrics including mean error, CDF analysis, and accuracy within distance thresholds (1m, 2m, 4m, 6m).</p>
+                    <h3><span class="feature-icon">📊</span> Spatial-Temporal Modeling</h3>
+                    <p>Captures both spatial correlation across APs and temporal correlation of RSSI measurements over time.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <h3><span class="feature-icon">🧪</span> Synthetic Data</h3>
-                    <p>Built-in synthetic data generation for testing and development without requiring the CRAWDAD dataset.</p>
+                    <h3><span class="feature-icon">⚡</span> Low Computational Cost</h3>
+                    <p>Processing time of only 0.00016s per test sample, suitable for real-time applications.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <h3><span class="feature-icon">✅</span> Production Ready</h3>
-                    <p>Complete test suite, CI/CD pipeline, Docker support, and proper package structure for deployment.</p>
+                    <h3><span class="feature-icon">🎯</span> High Accuracy</h3>
+                    <p>Achieves 94.65% overall accuracy with mean localization error of ~1.69m on CRAWDAD dataset.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <h3><span class="feature-icon">📈</span> Visualizations</h3>
-                    <p>Automated generation of location plots, error distributions, and cumulative distribution functions.</p>
+                    <h3><span class="feature-icon">🔧</span> Robust to Noise</h3>
+                    <p>DMD decomposition effectively handles multipath interference and environmental variations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Performance Analysis Section -->
+    <section id="performance" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2>Performance Analysis</h2>
+            
+            <!-- Figure 2: DMD Rank Performance -->
+            <div class="figure-container">
+                <div class="figure-title">Figure 2: Performance of HMM-DMD with Different κ (DMD Rank)</div>
+                <div class="placeholder-figure">
+                    <p><strong>Localization Errors vs Training Samples</strong></p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        Graph showing mean localization error decreases from ~2.3m to ~1.7m as training samples increase from 10 to 100.<br>
+                        Optimal performance achieved at κ=7 with 20 training samples.
+                    </p>
+                </div>
+                <div class="figure-caption">
+                    (a) Localization errors decrease with more training samples. (b) Performance improvement plateaus around 70% with κ≥7
+                </div>
+            </div>
+            
+            <!-- Table 1: Different DMD Ranks -->
+            <div class="doc-section">
+                <h3>Table 1: Localization Errors for Different DMD Ranks (κ)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Samples (p)</th>
+                            <th>κ=5</th>
+                            <th>κ=6</th>
+                            <th>κ=7</th>
+                            <th>κ=8</th>
+                            <th>κ=9</th>
+                            <th>κ=10</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>10</strong></td>
+                            <td>2.36m (53.2%)</td>
+                            <td>2.32m (53.9%)</td>
+                            <td><strong>2.27m (59.1%)</strong></td>
+                            <td>2.27m (59.3%)</td>
+                            <td>2.27m (59.3%)</td>
+                            <td>2.28m (59.3%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>20</strong></td>
+                            <td>1.86m (65.1%)</td>
+                            <td>1.83m (65.4%)</td>
+                            <td><strong>1.75m (69.2%)</strong></td>
+                            <td>1.75m (69.2%)</td>
+                            <td>1.75m (69.2%)</td>
+                            <td>1.76m (69.3%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>50</strong></td>
+                            <td>1.79m (68.2%)</td>
+                            <td>1.77m (68.3%)</td>
+                            <td><strong>1.71m (69.5%)</strong></td>
+                            <td>1.71m (69.5%)</td>
+                            <td>1.71m (69.6%)</td>
+                            <td>1.70m (69.6%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>100</strong></td>
+                            <td>1.78m (69.0%)</td>
+                            <td>1.77m (69.1%)</td>
+                            <td><strong>1.69m (69.8%)</strong></td>
+                            <td>1.69m (69.8%)</td>
+                            <td>1.69m (69.9%)</td>
+                            <td>1.68m (69.9%)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                    Values show Mean Error (Improvement %). Bold indicates optimal κ=7 configuration.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Results Section -->
+    <section id="results">
+        <div class="container">
+            <h2>Experimental Results</h2>
+            
+            <!-- Figure 3: CDF Comparison (p=20) -->
+            <div class="figure-container">
+                <div class="figure-title">Figure 3: CDF Comparison with State-of-the-Art Methods (κ=7, p=20)</div>
+                <div class="placeholder-figure">
+                    <p><strong>Cumulative Distribution Function</strong></p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        <strong>Within 2m:</strong><br>
+                        • HMM-DMD: <strong>40%</strong><br>
+                        • Random Forest: 30.3%<br>
+                        • WKNN: 25%<br>
+                        • Naive Bayes: 27.2%
+                    </p>
+                </div>
+                <div class="figure-caption">
+                    HMM-DMD shows superior performance across all distance thresholds
+                </div>
+            </div>
+            
+            <!-- Figure 4: CDF Comparison (p=100) -->
+            <div class="figure-container">
+                <div class="figure-title">Figure 4: CDF Comparison with Extended Training (κ=9, p=100)</div>
+                <div class="placeholder-figure">
+                    <p><strong>Performance Improvement</strong></p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        <strong>Within 2m:</strong> HMM-DMD outperforms NB by 12.7%, RF by 38.6%, WKNN by 39%<br>
+                        <strong>Within 4m:</strong> HMM-DMD outperforms NB by 20%, RF by 50%, WKNN by 54.7%<br>
+                        <strong>Within 6m:</strong> HMM-DMD outperforms NB by 12%, RF by 43.7%, WKNN by 40%
+                    </p>
+                </div>
+                <div class="figure-caption">
+                    Consistent superiority maintained with increased training samples
+                </div>
+            </div>
+            
+            <!-- Table 2: Accuracy and Processing Time -->
+            <div class="doc-section">
+                <h3>Table 2: Accuracy and Processing Time Comparison (κ=7, p=100)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Accuracy (%)</th>
+                            <th>Testing Time (s)</th>
+                            <th>Training Time (s)</th>
+                            <th>Time per Sample (s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WKNN</td>
+                            <td>87.61</td>
+                            <td>4.9856</td>
+                            <td>0.0019</td>
+                            <td>0.04986</td>
+                        </tr>
+                        <tr>
+                            <td>Random Forest</td>
+                            <td>89.37</td>
+                            <td>0.2240</td>
+                            <td>3.6905</td>
+                            <td>0.00224</td>
+                        </tr>
+                        <tr>
+                            <td>Naive Bayes</td>
+                            <td>91.68</td>
+                            <td>0.0177</td>
+                            <td>1.1217</td>
+                            <td>0.00018</td>
+                        </tr>
+                        <tr style="background-color: #e0f2fe;">
+                            <td><strong>HMM-DMD</strong></td>
+                            <td><strong>94.65</strong></td>
+                            <td><strong>0.1600</strong></td>
+                            <td><strong>3.0067</strong></td>
+                            <td><strong>0.00016</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                    HMM-DMD achieves highest accuracy (94.65%) with reasonable processing time suitable for real-time applications
+                </p>
+            </div>
+            
+            <!-- Key Results Summary -->
+            <div class="results-grid" style="margin-top: 3rem;">
+                <div class="result-card">
+                    <div class="result-number">94.65%</div>
+                    <div class="result-label">Overall Accuracy</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-number">~1.69m</div>
+                    <div class="result-label">Mean Localization Error</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-number">0.00016s</div>
+                    <div class="result-label">Processing Time/Sample</div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-number">7</div>
+                    <div class="result-label">Optimal DMD Rank (κ)</div>
                 </div>
             </div>
         </div>
@@ -435,77 +828,130 @@ python scripts/train_model.py --config config/default.yaml</code>
             </div>
             
             <div class="doc-section">
-                <h3>Python API</h3>
+                <h3>Python API Example</h3>
                 <div class="code-block">
                     <code>from models.hmm_dmd import HMMDMDLocalizer
 from src.data.data_loader import CrawdadDataLoader
+from src.data.preprocessor import RSSIPreprocessor
 
 # Load data
 loader = CrawdadDataLoader()
 X_train, y_train, rooms = loader.create_synthetic_data(n_samples=1000)
 
-# Train model
-model = HMMDMDLocalizer(dmd_rank=7, n_components=14)
+# Preprocess
+preprocessor = RSSIPreprocessor()
+X_train = preprocessor.preprocess(X_train, fit=True)
+
+# Train model (κ=7, as per paper)
+model = HMMDMDLocalizer(dmd_rank=7, n_components=14, n_mix=3)
 model.fit(X_train, y_train, rooms)
 
 # Predict
+X_test = preprocessor.preprocess(X_test)
 predictions = model.predict(X_test)</code>
+                </div>
+            </div>
+            
+            <div class="doc-section">
+                <h3>CRAWDAD Dataset</h3>
+                <p style="color: var(--text-light); margin-bottom: 1rem;">
+                    The implementation uses the CRAWDAD Mannheim/Compass dataset from University of Mannheim:
+                </p>
+                <ul style="color: var(--text-light); margin-left: 2rem;">
+                    <li><strong>Test area:</strong> 312 m² office building floor</li>
+                    <li><strong>Access Points:</strong> 14 APs (802.11)</li>
+                    <li><strong>Reference Points:</strong> 612 grids with 0.5m spacing</li>
+                    <li><strong>Training samples:</strong> 110 RSSI samples per RP (72,600 total)</li>
+                    <li><strong>Test samples:</strong> 110 samples at 83 random coordinates (9,460 total)</li>
+                </ul>
+                <div style="margin-top: 1rem;">
+                    <a href="https://crawdad.org/mannheim/compass/20080411/802.11" class="btn btn-secondary" target="_blank">
+                        Download CRAWDAD Dataset
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Results Section -->
-    <section id="results">
+    <!-- Algorithm Details Section -->
+    <section id="algorithm" style="background-color: var(--bg-light);">
         <div class="container">
-            <h2>Performance Results</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-light);">
-                Reproduces key results from the original paper on the CRAWDAD Mannheim/Compass dataset
-            </p>
+            <h2>Algorithm Details</h2>
             
-            <div class="results-grid">
-                <div class="result-card">
-                    <div class="result-number">94.65%</div>
-                    <div class="result-label">Overall Accuracy</div>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>DMD Feature Extraction</h3>
+                    <p><strong>Key Steps:</strong></p>
+                    <ol style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light);">
+                        <li>Split RSSI matrix into X₁ and X₂ (consecutive snapshots)</li>
+                        <li>Perform SVD: X₁ = UΣVᵀ</li>
+                        <li>Truncate to rank κ (typically κ=7)</li>
+                        <li>Compute projection matrix: M̂ = UᵀX₂VΣ⁻¹</li>
+                        <li>Eigendecomposition: M̂φ = φτ</li>
+                        <li>Extract DMD modes: v = X₂VΣ⁻¹φ</li>
+                        <li>Reconstruct features: Ψᵢ = mean(|v|)</li>
+                    </ol>
                 </div>
                 
-                <div class="result-card">
-                    <div class="result-number">~1.69m</div>
-                    <div class="result-label">Mean Localization Error</div>
+                <div class="feature-card">
+                    <h3>HMM Training</h3>
+                    <p><strong>Key Steps:</strong></p>
+                    <ol style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light);">
+                        <li>K-means clustering for initial state assignment</li>
+                        <li>Initialize Gaussian mixture parameters {μ, σ, ω}</li>
+                        <li>Baum-Welch EM algorithm for parameter optimization</li>
+                        <li>Build separate HMM for each room/grid</li>
+                        <li>Store emission probabilities B = {bᵢ(oₜ)}</li>
+                    </ol>
                 </div>
                 
-                <div class="result-card">
-                    <div class="result-number">14</div>
-                    <div class="result-label">Access Points</div>
-                </div>
-                
-                <div class="result-card">
-                    <div class="result-number">7</div>
-                    <div class="result-label">Rooms Covered</div>
+                <div class="feature-card">
+                    <h3>Viterbi Decoding</h3>
+                    <p><strong>Online Stage:</strong></p>
+                    <ol style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light);">
+                        <li>Extract DMD features from test RSSI</li>
+                        <li>Refine features using emission parameters</li>
+                        <li>Apply Viterbi algorithm to find optimal state sequence</li>
+                        <li>Map hidden states to physical coordinates</li>
+                        <li>Return estimated user location</li>
+                    </ol>
                 </div>
             </div>
             
-            <div style="margin-top: 3rem; text-align: center;">
-                <p style="color: var(--text-light); margin-bottom: 1rem;">
-                    Significant improvement over baseline methods including WKNN, Random Forest, and Naive Bayes
-                </p>
-                <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization#results" class="btn btn-secondary" target="_blank">
-                    View Detailed Results
-                </a>
+            <div class="doc-section" style="margin-top: 3rem;">
+                <h3>Radio Map Construction</h3>
+                <div class="code-block">
+                    <code>Ω = ⎡ (x₁, y₁)  f₁,₁  f₁,₂  ⋯  f₁,ᵈ ⎤
+    ⎢ (x₂, y₂)  f₂,₁  f₂,₂  ⋯  f₂,ᵈ ⎥
+    ⎢    ⋮       ⋮     ⋮    ⋱   ⋮   ⎥
+    ⎣ (xᴿ, yᴿ)  fᴿ,₁  fᴿ,₂  ⋯  fᴿ,ᵈ ⎦
+
+Where:
+- (xⱼ, yⱼ): Coordinates of reference point j
+- fⱼ,ᵢ: RSSI from access point i at reference point j
+- d: Number of access points (14 in CRAWDAD dataset)
+- R: Number of reference points (612 in test environment)</code>
+                </div>
             </div>
         </div>
     </section>
     
     <!-- Documentation Section -->
-    <section id="documentation" style="background-color: var(--bg-light);">
+    <section id="documentation">
         <div class="container">
-            <h2>Documentation</h2>
+            <h2>Documentation & Resources</h2>
             
             <div class="features">
                 <div class="feature-card">
                     <h3>📚 README</h3>
                     <p>Complete project overview, installation instructions, and usage examples.</p>
-                    <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization#readme" target="_blank" style="color: var(--primary-color);">Read More →</a>
+                    <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization#readme" target="_blank" style="color: var(--primary-color);">Read Documentation →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📄 Research Paper</h3>
+                    <p>Original paper published in MDPI Sensors (2021) with full theoretical details.</p>
+                    <a href="https://doi.org/10.3390/s21206778" target="_blank" style="color: var(--primary-color);">Read Paper →</a>
                 </div>
                 
                 <div class="feature-card">
@@ -515,41 +961,97 @@ predictions = model.predict(X_test)</code>
                 </div>
                 
                 <div class="feature-card">
+                    <h3>🧪 Examples</h3>
+                    <p>Jupyter notebooks demonstrating data exploration, feature extraction, and model training.</p>
+                    <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization/tree/main/notebooks" target="_blank" style="color: var(--primary-color);">View Examples →</a>
+                </div>
+                
+                <div class="feature-card">
                     <h3>🤝 Contributing</h3>
-                    <p>Guidelines for contributing to the project, coding standards, and development setup.</p>
+                    <p>Guidelines for contributing to the project and development setup.</p>
                     <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization/blob/main/CONTRIBUTING.md" target="_blank" style="color: var(--primary-color);">Contribute →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🐛 Issues</h3>
+                    <p>Report bugs, request features, or ask questions on GitHub Issues.</p>
+                    <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization/issues" target="_blank" style="color: var(--primary-color);">Open Issue →</a>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Citation Section -->
-    <section id="citation">
+    <section id="citation" style="background-color: var(--bg-light);">
         <div class="container">
             <h2>Citation</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-light);">
                 If you use this code in your research, please cite the original paper:
             </p>
             
-            <div class="code-block" style="max-width: 800px; margin: 0 auto;">
+            <div class="code-block" style="max-width: 900px; margin: 0 auto;">
                 <code>@article{babalola2021wifi,
   title={WiFi Fingerprinting Indoor Localization Based on Dynamic Mode 
          Decomposition Feature Selection with Hidden Markov Model},
   author={Babalola, Oluwaseyi Paul and Balyan, Vipin},
   journal={Sensors},
   volume={21},
-  number={18},
-  pages={6090},
+  number={20},
+  pages={6778},
   year={2021},
   publisher={MDPI},
-  doi={10.3390/s21186090}
+  doi={10.3390/s21206778},
+  url={https://doi.org/10.3390/s21206778}
 }</code>
             </div>
             
             <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization/blob/main/CITATION.cff" class="btn btn-secondary" target="_blank">
-                    Download Citation File
-                </a>
+                <div class="button-group">
+                    <a href="https://doi.org/10.3390/s21206778" class="btn" target="_blank">
+                        View Paper (Open Access)
+                    </a>
+                    <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization/blob/main/CITATION.cff" class="btn btn-secondary" target="_blank">
+                        Download Citation File
+                    </a>
+                </div>
+            </div>
+            
+            <div class="doc-section" style="margin-top: 3rem;">
+                <h3 style="text-align: center;">Paper Metadata</h3>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Journal</strong></td>
+                                <td>MDPI Sensors</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Publication Date</strong></td>
+                                <td>October 13, 2021</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Volume/Issue</strong></td>
+                                <td>21(20): 6778</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DOI</strong></td>
+                                <td><a href="https://doi.org/10.3390/s21206778" target="_blank">10.3390/s21206778</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>License</strong></td>
+                                <td>CC BY 4.0 (Open Access)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Authors</strong></td>
+                                <td>Oluwaseyi Paul Babalola, Vipin Balyan</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Institution</strong></td>
+                                <td>Cape Peninsula University of Technology</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
@@ -564,12 +1066,17 @@ predictions = model.predict(X_test)</code>
                 Developed by <a href="https://github.com/babalolaseyip" target="_blank">Oluwaseyi Paul Babalola</a>
             </p>
             <p style="margin-bottom: 1rem;">
+                Cape Peninsula University of Technology, South Africa
+            </p>
+            <p style="margin-bottom: 2rem;">
                 <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization" target="_blank">GitHub</a> · 
                 <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization/issues" target="_blank">Issues</a> · 
+                <a href="https://doi.org/10.3390/s21206778" target="_blank">Paper</a> · 
                 <a href="https://github.com/babalolaseyip/HMM-DMD-WiFi-Localization/blob/main/LICENSE" target="_blank">License</a>
             </p>
             <p style="opacity: 0.7; font-size: 0.9rem;">
-                © 2025 Oluwaseyi Paul Babalola. Released under the MIT License.
+                © 2025 Oluwaseyi Paul Babalola. Released under the MIT License.<br>
+                Research published in MDPI Sensors (2021) under CC BY 4.0.
             </p>
         </div>
     </footer>
@@ -608,6 +1115,33 @@ predictions = model.predict(X_test)</code>
                     link.classList.add('active');
                 }
             });
+        });
+        
+        // Add simple fade-in animation for feature cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card, .figure-container').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
